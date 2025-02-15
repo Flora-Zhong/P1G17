@@ -26,3 +26,26 @@ def get_barycentric_coordinates(triangle_coordinates: np.ndarray, point_coordina
     lam3 = 1 - lam1 - lam2
     return np.array([lam1, lam2, lam3])
 
+def get_cartesian_coordinates(triangle_coordinates: np.ndarray, barycentric_coordinates: np.ndarray) -> np.ndarray:
+    """
+
+    Returns the determinant of a matrix.
+
+    Parameters
+    ----------
+    triangle_coordinates : np.ndarray
+        The coordinates of the triangle.
+    barycentric_coordinates : np.ndarray
+        The barycentric coordinates of the triangle.
+
+    Returns
+    -------
+    np.ndarray, The coordinates of the point.
+
+    """
+    x1, x2, x3 = triangle_coordinates[0]
+    y1, y2, y3 = triangle_coordinates[1]
+    lam1, lam2, lam3 = barycentric_coordinates
+    x = lam1 * x1 + lam2 * x2 + lam3 * x3
+    y = lam1 * y1 + lam2 * y2 + lam3 * y3
+    return np.array([x, y])
