@@ -3,7 +3,7 @@ import numpy as np
 def get_barycentric_coordinates(triangle_coordinates: np.ndarray, point_coordinates: np.ndarray) -> np.ndarray:
     """
 
-    Returns the determinant of a matrix.
+    Returns the barycentric coordinates of the triangle.
 
     Parameters
     ----------
@@ -29,7 +29,7 @@ def get_barycentric_coordinates(triangle_coordinates: np.ndarray, point_coordina
 def get_cartesian_coordinates(triangle_coordinates: np.ndarray, barycentric_coordinates: np.ndarray) -> np.ndarray:
     """
 
-    Returns the determinant of a matrix.
+    Returns the coordinates of the point.
 
     Parameters
     ----------
