@@ -1,12 +1,9 @@
 import numpy as np
 
 def left_endpoint(x_vals: np.ndarray, func):
-    length = len(x_vals)
-    x_index = 0
-    total = 0
-    for i in range(length - 1):
-        total += func(x_vals[x_index] * (x_vals[x_index + 1] - x_vals[x_index]))
-        x_index += 1
+    a = x_vals[0]
+    b = x_vals[-1]
+    total = func(a) * (b - a)
     return total
 
 def trapezoid(x_vals: np.ndarray, func):
