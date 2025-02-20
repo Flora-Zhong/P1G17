@@ -50,6 +50,22 @@ def get_cartesian_coordinates(triangle_coordinates: np.ndarray, barycentric_coor
     y = lam1 * y1 + lam2 * y2 + lam3 * y3
     return np.array([x, y])
 
-def is_inside_triangle(triangle_coordinates, point_coordinates):
+def is_inside_triangle(triangle_coordinates: np.ndarray, point_coordinates: np.ndarray) -> bool:
+    """
+
+    Returns whether the point is inside the triangle.
+
+    Parameters
+    ----------
+    triangle_coordinates : np.ndarray
+        The coordinates of the triangle.
+    point_coordinates : np.ndarray
+        The coordinates of the point.
+
+    Returns
+    -------
+    bool, Whether the point is inside the triangle.
+
+    """
     barycentric_coord = get_barycentric_coordinates(triangle_coordinates, point_coordinates)
     return np.all(barycentric_coord >= 0)
