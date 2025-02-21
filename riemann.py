@@ -1,6 +1,6 @@
 import numpy as np
 
-def left_endpoint(x_vals: np.ndarray, func: np.ufunc):
+def left_endpoint(x_vals: np.ndarray, func: np.ufunc) -> float:
     """
 
     Returns the approximate Riemann integrals with the left endpoint function.
@@ -14,7 +14,7 @@ def left_endpoint(x_vals: np.ndarray, func: np.ufunc):
 
     Returns
     -------
-    np.ndarray, The approximate Riemann integrals with the left endpoint function.
+    float, The approximate Riemann integrals with the left endpoint function.
 
     """
     a = x_vals[0]
@@ -22,7 +22,7 @@ def left_endpoint(x_vals: np.ndarray, func: np.ufunc):
     total = func(a) * (b - a)
     return total
 
-def trapezoid(x_vals: np.ndarray, func: np.ufunc):
+def trapezoid(x_vals: np.ndarray, func: np.ufunc) -> float:
     """
 
     Returns the approximate Riemann integrals with the trapezoid function.
@@ -36,7 +36,7 @@ def trapezoid(x_vals: np.ndarray, func: np.ufunc):
 
     Returns
     -------
-    np.ndarray, The approximate Riemann integrals with the trapezoid function.
+    float, The approximate Riemann integrals with the trapezoid function.
 
     """
     length = len(x_vals)
@@ -47,7 +47,7 @@ def trapezoid(x_vals: np.ndarray, func: np.ufunc):
         x_index += 1
     return total
 
-def simpson(x_vals: np.ndarray, func: np.ufunc):
+def simpson(x_vals: np.ndarray, func: np.ufunc) -> float:
     """
 
     Returns the approximate Riemann integrals with the simpson function.
@@ -61,7 +61,7 @@ def simpson(x_vals: np.ndarray, func: np.ufunc):
 
     Returns
     -------
-    np.ndarray, The approximate Riemann integrals with the simpson function.
+    float, The approximate Riemann integrals with the simpson function.
 
     """
     length = len(x_vals)
