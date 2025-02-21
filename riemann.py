@@ -19,7 +19,7 @@ def left_endpoint(x_vals: np.ndarray, func: np.ufunc) -> float:
     """
     height = func(x_vals[:-1])
     width = np.diff(x_vals)
-    total = np.sum(height * width)
+    total = np.sum(width * height)
     return total
 
 def trapezoid(x_vals: np.ndarray, func: np.ufunc) -> float:
@@ -39,13 +39,11 @@ def trapezoid(x_vals: np.ndarray, func: np.ufunc) -> float:
     float, The approximate Riemann integrals with the trapezoid function.
 
     """
-    length = len(x_vals)
-    x_index = 0
-    total = 0
-    for i in range(length - 1):
-        total += (func(x_vals[x_index]) + func(x_vals[x_index + 1])) * (x_vals[x_index + 1] - x_vals[x_index]) / 2
-        x_index += 1
-    return total
+    a = x_vals[:-1]
+    b = x_vals[1:]
+    width = b - a
+    height = 0.5 * ((func(a)) + (func(b)))
+    return np.sum(width * height)
 
 def simpson(x_vals: np.ndarray, func: np.ufunc) -> float:
     """
@@ -72,3 +70,18 @@ def simpson(x_vals: np.ndarray, func: np.ufunc) -> float:
         total += (x_vals[x_index + 1] - x_vals[x_index]) / 6 * (func(x_vals[x_index]) + 4 * func(mid) + func(x_vals)[x_index + 1])
         x_index += 1
     return total
+
+
+
+
+x_vals = np.linspace(0, np.pi, 10000)
+func = np.sin
+
+# You don't need to change anything below this line
+left_endpoint_sum = left_endpoint(x_vals, func)
+trapezoid_sum = trapezoid(x_vals, func)
+simpson_sum = simpson(x_vals, func)
+
+print(f"Left Endpoint: {left_endpoint_sum}")
+print(f"    Trapezoid: {trapezoid_sum}")
+print(f"      Simpson: {simpson_sum}")
