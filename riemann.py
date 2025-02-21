@@ -17,9 +17,9 @@ def left_endpoint(x_vals: np.ndarray, func: np.ufunc) -> float:
     float, The approximate Riemann integrals with the left endpoint function.
 
     """
-    a = x_vals[0]
-    b = x_vals[-1]
-    total = func(a) * (b - a)
+    height = func(x_vals[:-1])
+    width = np.diff(x_vals)
+    total = np.sum(height * width)
     return total
 
 def trapezoid(x_vals: np.ndarray, func: np.ufunc) -> float:
